@@ -1,0 +1,17 @@
+{
+    "name": "Unity.Texture2DArrayImportPipeline.Editor.Tests",
+    "references": [
+        "GUID:2e547bd6f8a19ba49b452f98af61e722"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
