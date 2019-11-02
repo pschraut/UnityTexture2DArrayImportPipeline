@@ -1,0 +1,1 @@
+# UnityTexture2DArrayImportPipeline
