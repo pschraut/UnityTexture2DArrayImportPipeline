@@ -2,6 +2,7 @@
 // Texture2D Array Importer for Unity. Copyright (c) 2019 Peter Schraut (www.console-dev.de). See LICENSE.md
 // https://github.com/pschraut/UnityTexture2DArrayImportPipeline
 //
+#pragma warning disable IDE1006, IDE0017
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -156,12 +157,12 @@ namespace Oddworm.EditorFramework
             var importer = target as Texture2DArrayImporter;
             var textureProperty = m_Textures.GetArrayElementAtIndex(index);
 
-            var errorMsg = Texture2DArrayImporter.GetVerifyString(importer, index);
+            var errorMsg = importer.GetVerifyString(index);
             if (!string.IsNullOrEmpty(errorMsg))
             {
                 r = rect;
                 rect.width = 24;
-                switch (Texture2DArrayImporter.Verify(importer, index))
+                switch (importer.Verify(index))
                 {
                     case Texture2DArrayImporter.VerifyResult.Valid:
                     case Texture2DArrayImporter.VerifyResult.MasterNull:
@@ -198,11 +199,11 @@ namespace Oddworm.EditorFramework
                 // Make sure we assign assets that exist on disk only.
                 // During my tests, when selecting built-in assets,
                 // Unity reimports the texture array asset infinitely, which is probably an Unity bug.
-                var result = Texture2DArrayImporter.Verify(importer, index);
+                var result = importer.Verify(index);
                 if (result == Texture2DArrayImporter.VerifyResult.NotAnAsset)
                 {
                     textureProperty.objectReferenceValue = null;
-                    var msg = Texture2DArrayImporter.GetVerifyString(importer, index);
+                    var msg = importer.GetVerifyString(index);
                     Debug.LogError(msg, importer);
                 }
             }
