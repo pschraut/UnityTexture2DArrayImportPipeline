@@ -15,14 +15,13 @@ This Texture2DArray Import Pipeline is an editor extension, it does not contain 
 
 In order to use the Texture2DArray Import Pipeline, you have to add the package to your project. As of Unity 2019.3, Unity supports to add packages from git through the Package Manager window.
 
-The following text shows how to add a package from git using the new "Add package from git URL" functionality in Unity 2019.3. If you use an older version of Unity, you probably need to modify the "Packages/packages.json" file by hand, google is your friend in this case.
-
-In [this video](https://youtu.be/1eAJxc-85gk) I show how to install the package and create a Texture2DArray asset. Please note that the repository URL in the video is incorrect, use the links below instead.
+In Unity's Package Manager, choose "Add package from git URL" and insert of one the Package URL you can find below.
 
 ## Package URL's
 
 | Version  |     Link      |
 |----------|:-------------:|
+| 1.0.1 | https://github.com/pschraut/UnityTexture2DArrayImportPipeline.git#1.0.1 |
 | 1.0.0 | https://github.com/pschraut/UnityTexture2DArrayImportPipeline.git#1.0.0 |
 
 
@@ -53,7 +52,7 @@ A Texture2DArray asset is built from several input textures. The contents of tho
 
 The import pipeline registers these input textures as dependencies. This means if a texture that is used by a Texture2DArray asset changes, the Texture2DArray asset gets reimported automatically as well.
 
-It's a really neat feature, as you don't need to hit rebuild button to update the Texture2DArray every time you change one of its input textures.
+It's a really neat feature, as you don't need to hit a rebuild button to update the Texture2DArray every time you change one of its input textures.
 
 ## Platform handling
 
