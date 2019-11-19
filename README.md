@@ -3,7 +3,7 @@
 Unity has no built-in import pipeline for texture arrays in Unity 2020.1 and earlier versions yet. This is the relevant quote from their documentation:
 > Currently in Unity texture arrays do not have an import pipeline for them, and must be created from code, either at runtime or in editor scripts. ([link](https://docs.unity3d.com/ScriptReference/Texture2DArray.html))
 
-The Texture2DArray Import Pipeline package you're currently looking at tries to fill the gap of that missing import pipeline in Unity and provides an implementation to create and modify texture arrays.
+The Texture2DArray Import Pipeline package you're currently looking at tries to fill the gap of that missing import pipeline and provides an implementation to create and modify texture arrays.
 
 This Texture2DArray Import Pipeline is an editor extension, it does not contain code that is required at runtime.
 
@@ -30,11 +30,11 @@ In Unity's Package Manager, choose "Add package from git URL" and insert of one 
 
 ## Overview
 
-The Texture2DArray Import Pipeline uses Unity's [ScriptImporter](https://docs.unity3d.com/Manual/ScriptedImporters.html), which has been introduced around Unity 2017.1 and is marked as experimental since then. ScriptImporter allows to implement custom asset importers in C# for file formats not natively supported by Unity.
+Texture2DArray Import Pipeline uses Unity's [ScriptImporter](https://docs.unity3d.com/Manual/ScriptedImporters.html). ScriptImporter allows to implement custom asset importers in C# for file formats not natively supported by Unity.
 
-While Texture2DArray is natively supported by Unity, it just has no import pipeline yet. What I created is a ScriptImporter that handles files ending with .tex2array as a Texture2DArray object.
+While Texture2DArray is natively supported by Unity, it just has no import pipeline yet. What I created is a ScriptImporter that handles files ending with .texture2darray as a Texture2DArray object.
 
-Combined with a custom [ScriptedImporterEditor](ScriptedImporterEditor), I'm quite happy with the result, as the integration feels quite smooth and you hopefully can't tell that it's not part of built-in Unity.
+Combined with a custom [ScriptedImporterEditor](ScriptedImporterEditor), I'm pretty happy with the result, as the integration feels quite smooth and you hopefully can't tell that it's not part of built-in Unity.
 
 
 ## Texture format and size
@@ -88,7 +88,7 @@ Then add a texture to each slice and press the "Apply" button. At this point you
 
 If the Texture2DArray is still solid magenta after you pressed "Apply", it's very likely there was an issue with the setup. Please take a look at the Unity Console window for any import error. Open the Console from the main menu "Window > General > Console".
 
-A common reason why importing a Texture2DArray fails is because the input textures have different sizes or formats. Every texture added to the Texture2DArray must have the same size and format, otherwise it won't work. Please see [this document](howitworks) for technical details.
+A common reason why importing a Texture2DArray fails, is because the input textures have different sizes or formats. Every texture added to the Texture2DArray must have the same size and format, as explained earlier, otherwise it won't work.
 
 The error in the Console window would look like in the following image.
 
