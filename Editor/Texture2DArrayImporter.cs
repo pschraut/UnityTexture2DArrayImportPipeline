@@ -14,7 +14,7 @@ namespace Oddworm.EditorFramework
     [CanEditMultipleObjects]
     [HelpURL("https://docs.unity3d.com/Manual/SL-TextureArrays.html")]
     [ScriptedImporter(1, Texture2DArrayImporter.kFileExtension)]
-    public partial class Texture2DArrayImporter : ScriptedImporter
+    public class Texture2DArrayImporter : ScriptedImporter
     {
         [Tooltip("Selects how the Texture behaves when tiled.")]
         [SerializeField]
