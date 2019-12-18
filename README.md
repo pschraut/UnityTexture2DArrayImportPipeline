@@ -15,7 +15,7 @@ This Texture2DArray Import Pipeline is an editor extension, it does not contain 
 
 In order to use the Texture2DArray Import Pipeline, you have to add the package to your project. As of Unity 2019.3, Unity supports to add packages from git through the Package Manager window.
 
-In Unity's Package Manager, choose "Add package from git URL" and insert of one the Package URL you can find below.
+In Unity's Package Manager, choose "Add package from git URL" and insert one of the Package URL's you can find below.
 
 ## Package URL's
 
