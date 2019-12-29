@@ -30,11 +30,11 @@ In Unity's Package Manager, choose "Add package from git URL" and insert one of 
 
 ## Overview
 
-Texture2DArray Import Pipeline uses Unity's [ScriptImporter](https://docs.unity3d.com/Manual/ScriptedImporters.html). ScriptImporter allows to implement custom asset importers in C# for file formats not natively supported by Unity.
+Texture2DArray Import Pipeline uses Unity's [ScriptedImporter](https://docs.unity3d.com/Manual/ScriptedImporters.html). ScriptedImporter allows to implement custom asset importers in C# for file formats not natively supported by Unity.
 
-While Texture2DArray is natively supported by Unity, it just has no import pipeline yet. What I created is a ScriptImporter that handles files ending with .texture2darray as a Texture2DArray object.
+Texture2DArray is natively supported by Unity, but has no import pipeline yet. What I created is a ScriptedImporter that handles files ending with .texture2darray as a Texture2DArray object.
 
-Combined with a custom [ScriptedImporterEditor](ScriptedImporterEditor), I'm pretty happy with the result, as the integration feels quite smooth and you hopefully can't tell that it's not part of built-in Unity.
+Combined with a custom [ScriptedImporterEditor](https://docs.unity3d.com/ScriptReference/Experimental.AssetImporters.ScriptedImporterEditor.html), I'm pretty happy with the result, as the integration feels quite smooth and you hopefully can't tell that it's not part of built-in Unity.
 
 
 ## Texture format and size
