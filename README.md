@@ -43,7 +43,9 @@ The texture size and format of a Texture2DArray is taken from the first input te
 
 Input textures are copied into the Texture2DArray with no modifications, thus they all need to match. If they don't match, you'll see an error why the Texture2DArray could not be created and the Texture2DArray is changed to solid magenta to indicate there is an issue that must be fixed.
 
-If you want to use different texture formats/sizes for different target platforms, this is fully supported. You just need to specify the format and size in the input textures, not in the Texture2DArray asset.
+If you want to use different texture formats/sizes for different target platforms, this is fully supported. You just need to specify the format and size in the input textures, not in the Texture2DArray asset, as shown in the video below.
+
+[![](http://img.youtube.com/vi/tghQHb6QWnU/0.jpg)](http://www.youtube.com/watch?v=tghQHb6QWnU "")
 
 
 ## Dependency handling
@@ -53,6 +55,7 @@ A Texture2DArray asset is built from several input textures. The contents of tho
 The import pipeline registers these input textures as dependencies. This means if a texture that is used by a Texture2DArray asset changes, the Texture2DArray asset gets reimported automatically as well.
 
 It's a really neat feature, as you don't need to hit a rebuild button to update the Texture2DArray every time you change one of its input textures.
+
 
 ## Platform handling
 
