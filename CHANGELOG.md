@@ -9,8 +9,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
  - Removed "partial" keyword from the Texture2DArrayImporter class.
  
 ### Fixed
- - Added missing reference Unity TestRunner assemblies in Texture2D Import Pipeline test assembly.
- - Varios documentation fixes.
+ - Added missing reference Unity TestRunner assemblies to Texture2D Import Pipeline test assembly.
+ - Various documentation fixes.
  
 ## [1.0.0] - 2019-09-02
  - First release
