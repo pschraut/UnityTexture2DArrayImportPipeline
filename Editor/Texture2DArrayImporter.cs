@@ -5,9 +5,14 @@
 #pragma warning disable IDE1006, IDE0017
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.Experimental.AssetImporters;
 using System.IO;
 using System.Collections.Generic;
+
+#if UNITY_2020_2_OR_NEWER
+using UnityEditor.AssetImporters;
+#else
+using UnityEditor.Experimental.AssetImporters;
+#endif
 
 namespace Oddworm.EditorFramework
 {
@@ -53,7 +58,7 @@ namespace Oddworm.EditorFramework
         public Texture2D[] textures
         {
             get { return m_Textures.ToArray(); }
-            set 
+            set
             {
                 if (value == null)
                     throw new System.NotSupportedException("'textures' must not be set to 'null'. If you want to clear the textures array, set it to a zero-sized array instead.");
@@ -158,7 +163,7 @@ namespace Oddworm.EditorFramework
                         errorPixels[n] = Color.magenta;
                     errorTexture.SetPixels32(errorPixels);
                     errorTexture.Apply();
-                    
+
                     for (var n = 0; n < texture2DArray.depth; ++n)
                         Graphics.CopyTexture(errorTexture, 0, texture2DArray, n);
                 }
@@ -179,7 +184,7 @@ namespace Oddworm.EditorFramework
                     ctx.DependsOnSourceAsset(path);
                 }
             }
-            
+
             ctx.AddObjectToAsset("Texture2DArray", texture2DArray);
             ctx.SetMainObject(texture2DArray);
 

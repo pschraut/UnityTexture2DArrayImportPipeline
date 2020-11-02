@@ -7,8 +7,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-using UnityEditor.Experimental.AssetImporters;
 using UnityEditorInternal;
+
+#if UNITY_2020_2_OR_NEWER
+using UnityEditor.AssetImporters;
+#else
+using UnityEditor.Experimental.AssetImporters;
+#endif
 
 namespace Oddworm.EditorFramework
 {
@@ -70,7 +75,7 @@ namespace Oddworm.EditorFramework
         {
             serializedObject.Update();
 
-            // This is just some visual nonsense to make it look&feel 
+            // This is just some visual nonsense to make it look&feel
             // similar to Unity's Texture Inspector.
             using (new EditorGUI.DisabledGroupScope(true))
             {
