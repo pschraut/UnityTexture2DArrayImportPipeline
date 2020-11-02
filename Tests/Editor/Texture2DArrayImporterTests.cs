@@ -2,13 +2,9 @@
 // Texture2D Array Importer for Unity. Copyright (c) 2019 Peter Schraut (www.console-dev.de). See LICENSE.md
 // https://github.com/pschraut/UnityTexture2DArrayImportPipeline
 //
-using System.Collections;
-using System.Collections.Generic;
 using NUnit.Framework;
-using UnityEngine;
-using UnityEngine.TestTools;
 using UnityEditor;
-using Oddworm.EditorFramework;
+using UnityEngine;
 
 namespace Oddworm.EditorFramework.Tests
 {

@@ -3,8 +3,6 @@
 // https://github.com/pschraut/UnityTexture2DArrayImportPipeline
 //
 #pragma warning disable IDE1006, IDE0017
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 using UnityEditorInternal;
