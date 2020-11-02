@@ -56,6 +56,11 @@ namespace Oddworm.EditorFramework
         SerializedProperty m_Textures = null;
         ReorderableList m_TextureList = null;
 
+        public override bool showImportedObject
+        {
+            get { return false; }
+        }
+
         public override void OnEnable()
         {
             base.OnEnable();
