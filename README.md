@@ -1,5 +1,7 @@
 # Texture2DArray Import Pipeline for Unity
 
+[![openupm](https://img.shields.io/npm/v/com.oddworm.texture2darrayimportpipeline?label=openupm&registry_uri=https://package.openupm.com)](https://openupm.com/packages/com.oddworm.texture2darrayimportpipeline/)
+
 Unity has no built-in import pipeline for texture arrays in Unity 2020.1 and earlier versions yet. This is the relevant quote from their documentation:
 > Currently in Unity texture arrays do not have an import pipeline for them, and must be created from code, either at runtime or in editor scripts. ([link](https://docs.unity3d.com/ScriptReference/Texture2DArray.html))
 
@@ -13,11 +15,10 @@ This Texture2DArray Import Pipeline is an editor extension, it does not contain 
 
 # Installation
 
+## Install via Git URL
 In order to use the Texture2DArray Import Pipeline, you have to add the package to your project. As of Unity 2019.3, Unity supports to add packages from git through the Package Manager window.
 
 In Unity's Package Manager, choose "Add package from git URL" and insert one of the Package URL's you can find below.
-
-## Package URL's
 
 | Version  |     Link      |
 |----------|---------------|
@@ -25,6 +26,14 @@ In Unity's Package Manager, choose "Add package from git URL" and insert one of 
 | 1.1.0 | https://github.com/pschraut/UnityTexture2DArrayImportPipeline.git#1.1.0 |
 | 1.0.1 | https://github.com/pschraut/UnityTexture2DArrayImportPipeline.git#1.0.1 |
 | 1.0.0 | https://github.com/pschraut/UnityTexture2DArrayImportPipeline.git#1.0.0 |
+
+## Install via OpenUPM
+
+The package is also available on the [openupm registry](https://openupm.com). It's recommended to install it via [openupm-cli](https://github.com/openupm/openupm-cli).
+
+```
+openupm add com.oddworm.texture2darrayimportpipeline
+```
 
 
 # Unity Bugs
