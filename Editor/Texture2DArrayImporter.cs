@@ -1,5 +1,5 @@
 ﻿//
-// Texture2D Array Importer for Unity. Copyright (c) 2019 Peter Schraut (www.console-dev.de). See LICENSE.md
+// Texture2D Array Importer for Unity. Copyright (c) 2019-2021 Peter Schraut (www.console-dev.de). See LICENSE.md
 // https://github.com/pschraut/UnityTexture2DArrayImportPipeline
 //
 #pragma warning disable IDE1006, IDE0017
@@ -18,7 +18,7 @@ namespace Oddworm.EditorFramework
 {
     [CanEditMultipleObjects]
     [HelpURL("https://docs.unity3d.com/Manual/SL-TextureArrays.html")]
-    [ScriptedImporter(1, Texture2DArrayImporter.kFileExtension)]
+    [ScriptedImporter(k_VersionNumber, Texture2DArrayImporter.kFileExtension)]
     public class Texture2DArrayImporter : ScriptedImporter
     {
         [Tooltip("Selects how the Texture behaves when tiled.")]
@@ -108,6 +108,12 @@ namespace Oddworm.EditorFramework
         /// </summary>
         public const string kFileExtension = "texture2darray";
 
+#if UNITY_2020_1_OR_NEWER
+        const int k_VersionNumber = 202010;
+#else
+        const int k_VersionNumber = 201940;
+#endif
+
         public override void OnImportAsset(AssetImportContext ctx)
         {
             var width = 64;
@@ -181,9 +187,21 @@ namespace Oddworm.EditorFramework
                 if (source != null)
                 {
                     var path = AssetDatabase.GetAssetPath(source);
+#if UNITY_2020_1_OR_NEWER
+                    ctx.DependsOnArtifact(path);
+#else
                     ctx.DependsOnSourceAsset(path);
+#endif
                 }
             }
+
+#if !UNITY_2020_1_OR_NEWER
+            // This value is not really used in this importer,
+            // but getting the build target here will add a dependency to the current active buildtarget.
+            // Because DependsOnArtifact does not exist in 2019.4, adding this dependency on top of the DependsOnSourceAsset
+            // will force a re-import when the target platform changes in case it would have impacted any texture this importer depends on.
+            var buildTarget = ctx.selectedBuildTarget;
+#endif
 
             ctx.AddObjectToAsset("Texture2DArray", texture2DArray);
             ctx.SetMainObject(texture2DArray);
