@@ -21,6 +21,7 @@ In Unity's Package Manager, choose "Add package from git URL" and insert one of 
 
 | Version  |     Link      |
 |----------|---------------|
+| 1.3.0 | https://github.com/pschraut/UnityTexture2DArrayImportPipeline.git#1.3.0 |
 | 1.2.0 | https://github.com/pschraut/UnityTexture2DArrayImportPipeline.git#1.2.0 |
 | 1.1.0 | https://github.com/pschraut/UnityTexture2DArrayImportPipeline.git#1.1.0 |
 | 1.0.1 | https://github.com/pschraut/UnityTexture2DArrayImportPipeline.git#1.0.1 |
@@ -30,7 +31,6 @@ In Unity's Package Manager, choose "Add package from git URL" and insert one of 
 # Unity Bugs
 | Bug | Fixed in | Description |
 |-----|:--------:|-------------|
-| [1309841](https://issuetracker.unity3d.com/issues/editor-does-not-reimport-texture2darray-when-build-target-is-changed) | n/a | Editor does not reimport Texture2DArray when Build Target is changed |
 | [1212874](https://forum.unity.com/threads/case-1212874-asset-pipeline-v2-breaks-scriptedimporter-functionality.811833/) | n/a | Asset Pipeline v2 breaks ScriptedImporter functionality |
 
 
