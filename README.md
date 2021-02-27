@@ -33,6 +33,11 @@ If you find this package useful, please mention my name in your credits screen.
 Something like "Texture2DArray Import Pipeline by Peter Schraut" or "Thanks to Peter Schraut" would be very much appreciated.
 
 
+# Unity Bugs
+| Bug | Fixed in | Description |
+|-----|:--------:|-------------|
+| [1317998](https://forum.unity.com/threads/case-1317998-texture2darray-texture3d-compressed-texture-format-is-not-supported-on-this-platform.1066052/)|n/a|Creating a Texture2DArray with any compressed texture format causes the editor to output "<TextureFormat> is not supported on this platform. Decompressing texture.", yet Unity is able to create the object with this particular texture format. At least the Inspector displays it's using that format.|
+
 # How it works
 
 ## Overview
