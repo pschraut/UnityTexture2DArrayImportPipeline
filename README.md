@@ -27,11 +27,10 @@ In Unity's Package Manager, choose "Add package from git URL" and insert one of 
 | 1.0.1 | https://github.com/pschraut/UnityTexture2DArrayImportPipeline.git#1.0.1 |
 | 1.0.0 | https://github.com/pschraut/UnityTexture2DArrayImportPipeline.git#1.0.0 |
 
+# Credits
 
-# Unity Bugs
-| Bug | Fixed in | Description |
-|-----|:--------:|-------------|
-| [1212874](https://forum.unity.com/threads/case-1212874-asset-pipeline-v2-breaks-scriptedimporter-functionality.811833/) | n/a | Asset Pipeline v2 breaks ScriptedImporter functionality |
+If you find this package useful, please mention my name in your credits screen.
+Something like "Texture2DArray Import Pipeline by Peter Schraut" or "Thanks to Peter Schraut" would be very much appreciated.
 
 
 # How it works
