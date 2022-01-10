@@ -1,6 +1,6 @@
 # Texture2DArray Import Pipeline for Unity
 
-Unity has no built-in import pipeline for texture arrays in Unity 2020.1 and earlier versions yet. This is the relevant quote from their documentation:
+Unity has no built-in import pipeline for texture arrays in Unity 2020.1 and earlier versions. This is the relevant quote from their documentation:
 > Currently in Unity texture arrays do not have an import pipeline for them, and must be created from code, either at runtime or in editor scripts. ([link](https://docs.unity3d.com/ScriptReference/Texture2DArray.html))
 
 The Texture2DArray Import Pipeline package you're currently looking at tries to fill the gap of that missing import pipeline and provides an implementation to create and modify texture arrays.
@@ -13,11 +13,13 @@ This Texture2DArray Import Pipeline is an editor extension, it does not contain 
 
 # Installation
 
-In order to use the Texture2DArray Import Pipeline, you have to add the package to your project. As of Unity 2019.3, Unity supports to add packages from git through the Package Manager window.
-
-In Unity's Package Manager, choose "Add package from git URL" and insert one of the Package URL's you can find below.
+Open in Unity Window > Package Manager, choose "Add package from git URL" and insert one of the Package URL's you can find below.
 
 ## Package URL's
+
+I recommend to right-click the URL below and choose "Copy Link" rather than selecting the text and copying it, because sometimes it copies a space at the end and the Unity Package Manager can't handle it and spits out an error when you try to add the package.
+
+Please see the ```CHANGELOG.md``` file to see what's changed in each version.
 
 | Version  |     Link      |
 |----------|---------------|
@@ -36,7 +38,8 @@ Something like "Texture2DArray Import Pipeline by Peter Schraut" or "Thanks to P
 # Unity Bugs
 | Bug | Fixed in | Description |
 |-----|:--------:|-------------|
-| [1317998](https://forum.unity.com/threads/case-1317998-texture2darray-texture3d-compressed-texture-format-is-not-supported-on-this-platform.1066052/)|n/a|Creating a Texture2DArray with any compressed texture format causes the editor to output "<TextureFormat> is not supported on this platform. Decompressing texture.", yet Unity is able to create the object with this particular texture format. At least the Inspector displays it's using that format.|
+| [1393786](https://issuetracker.unity3d.com/product/unity/issues/guid/1393786)|n/a|Using ```Texture Quality``` other than ```Full``` under the Unity Quality Settings (or QualitySettings.masterTextureLimit) causes the Texture2DArray to be empty when creating a new or reimporting an existing one. Basically the Texture2DArray Import Pipeline doesn't work when this setting is not "Full". This is the bug-report at Unity Technologies that represents [issue #4](https://github.com/pschraut/UnityTexture2DArrayImportPipeline/issues/4) in this repository.|
+| [1317998](https://forum.unity.com/threads/case-1317998-texture2darray-texture3d-compressed-texture-format-is-not-supported-on-this-platform.1066052/)|2021.2.0a14|Creating a Texture2DArray with any compressed texture format causes the editor to output "TextureFormat is not supported on this platform. Decompressing texture.", yet Unity is able to create the object with this particular texture format. At least the Inspector displays it's using that format.|
 
 # How it works
 
