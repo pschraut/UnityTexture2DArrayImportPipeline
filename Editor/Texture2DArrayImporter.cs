@@ -34,6 +34,9 @@ namespace Oddworm.EditorFramework
         [SerializeField]
         int m_AnisoLevel = 1;
 
+        [SerializeField]
+        bool m_Readable = false;
+
         [Tooltip("A list of textures that are added to the texture array.")]
         [SerializeField]
         List<Texture2D> m_Textures = new List<Texture2D>();
@@ -103,6 +106,12 @@ namespace Oddworm.EditorFramework
             set { m_AnisoLevel = value; }
         }
 
+        public bool readable
+        {
+            get { return m_Readable; }
+            set { m_Readable = value; }
+        }
+
         /// <summary>
         /// The file extension used for Texture2DArray assets without leading dot.
         /// </summary>
@@ -142,7 +151,7 @@ namespace Oddworm.EditorFramework
             // Create the texture array.
             // When the texture array asset is being created, there are no input textures added yet,
             // thus we do Max(1, Count) to make sure to add at least 1 slice.
-            var texture2DArray = new Texture2DArray(width, height, Mathf.Max(1, m_Textures.Count), textureFormat, mipmapEnabled, !srgbTexture);
+            var texture2DArray = new Texture2DArray(width, height, Mathf.Max(1, m_Textures.Count), textureFormat, mipmapEnabled, !srgbTexture, m_Readable);
             texture2DArray.wrapMode = m_WrapMode;
             texture2DArray.filterMode = m_FilterMode;
             texture2DArray.anisoLevel = m_AnisoLevel;
