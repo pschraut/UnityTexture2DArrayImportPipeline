@@ -34,6 +34,9 @@ namespace Oddworm.EditorFramework
         [SerializeField]
         int m_AnisoLevel = 1;
 
+        [SerializeField]
+        bool m_Readable = false;
+
         [Tooltip("A list of textures that are added to the texture array.")]
         [SerializeField]
         List<Texture2D> m_Textures = new List<Texture2D>();
@@ -101,6 +104,12 @@ namespace Oddworm.EditorFramework
         {
             get { return m_AnisoLevel; }
             set { m_AnisoLevel = value; }
+        }
+
+        public bool readable
+        {
+            get { return m_Readable; }
+            set { m_Readable = value; }
         }
 
         /// <summary>
@@ -203,6 +212,7 @@ namespace Oddworm.EditorFramework
             var buildTarget = ctx.selectedBuildTarget;
 #endif
 
+            texture2DArray.Apply(false, !m_Readable);
             ctx.AddObjectToAsset("Texture2DArray", texture2DArray);
             ctx.SetMainObject(texture2DArray);
 
