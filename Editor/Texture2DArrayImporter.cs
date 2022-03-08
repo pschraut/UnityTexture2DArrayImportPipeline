@@ -151,7 +151,7 @@ namespace Oddworm.EditorFramework
             // Create the texture array.
             // When the texture array asset is being created, there are no input textures added yet,
             // thus we do Max(1, Count) to make sure to add at least 1 slice.
-            var texture2DArray = new Texture2DArray(width, height, Mathf.Max(1, m_Textures.Count), textureFormat, mipmapEnabled, !srgbTexture, m_Readable);
+            var texture2DArray = new Texture2DArray(width, height, Mathf.Max(1, m_Textures.Count), textureFormat, mipmapEnabled, !srgbTexture);
             texture2DArray.wrapMode = m_WrapMode;
             texture2DArray.filterMode = m_FilterMode;
             texture2DArray.anisoLevel = m_AnisoLevel;
@@ -212,6 +212,7 @@ namespace Oddworm.EditorFramework
             var buildTarget = ctx.selectedBuildTarget;
 #endif
 
+            texture2DArray.Apply(false, !m_Readable);
             ctx.AddObjectToAsset("Texture2DArray", texture2DArray);
             ctx.SetMainObject(texture2DArray);
 
