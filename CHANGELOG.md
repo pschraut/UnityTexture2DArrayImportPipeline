@@ -4,7 +4,7 @@ All notable changes to this package are documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [1.4.0] - 202?-??-??
+## [1.4.0] - 2022-03-11
 After installing this update, it will trigger a reimport of all Texture2DArray assets in the project and Texture2DArray's will no longer be readable via scripts by default.
 ### Added
  - Added ability to toggle whether the Texture2DArray is readable from scripts at the expense of consuming more memory when turned on. The default is off. Thanks to Guarneri1743 for the contribution, see [PR#7](https://github.com/pschraut/UnityTexture2DArrayImportPipeline/pull/7).
