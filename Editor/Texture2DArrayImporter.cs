@@ -35,7 +35,7 @@ namespace Oddworm.EditorFramework
         int m_AnisoLevel = 1;
 
         [SerializeField]
-        bool m_Readable = false;
+        bool m_IsReadable = false;
 
         [Tooltip("A list of textures that are added to the texture array.")]
         [SerializeField]
@@ -106,10 +106,14 @@ namespace Oddworm.EditorFramework
             set { m_AnisoLevel = value; }
         }
 
-        public bool readable
+        /// <summary>
+        /// Set this to true if you want texture data to be readable from scripts.
+        /// Set it to false to prevent scripts from reading texture data.
+        /// </summary>
+        public bool isReadable
         {
-            get { return m_Readable; }
-            set { m_Readable = value; }
+            get { return m_IsReadable; }
+            set { m_IsReadable = value; }
         }
 
         /// <summary>
@@ -118,9 +122,9 @@ namespace Oddworm.EditorFramework
         public const string kFileExtension = "texture2darray";
 
 #if UNITY_2020_1_OR_NEWER
-        const int k_VersionNumber = 202010;
+        const int k_VersionNumber = 202011;
 #else
-        const int k_VersionNumber = 201940;
+        const int k_VersionNumber = 201941;
 #endif
 
         public override void OnImportAsset(AssetImportContext ctx)
@@ -212,7 +216,7 @@ namespace Oddworm.EditorFramework
             var buildTarget = ctx.selectedBuildTarget;
 #endif
 
-            texture2DArray.Apply(false, !m_Readable);
+            texture2DArray.Apply(false, !m_IsReadable);
             ctx.AddObjectToAsset("Texture2DArray", texture2DArray);
             ctx.SetMainObject(texture2DArray);
 
