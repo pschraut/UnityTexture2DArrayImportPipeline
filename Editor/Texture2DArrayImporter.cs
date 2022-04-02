@@ -1,8 +1,8 @@
 ﻿//
-// Texture2D Array Importer for Unity. Copyright (c) 2019-2021 Peter Schraut (www.console-dev.de). See LICENSE.md
+// Texture2D Array Importer for Unity. Copyright (c) 2019-2022 Peter Schraut (www.console-dev.de). See LICENSE.md
 // https://github.com/pschraut/UnityTexture2DArrayImportPipeline
 //
-#pragma warning disable IDE1006, IDE0017
+#pragma warning disable IDE1006, IDE0017, IDE0090
 using UnityEngine;
 using UnityEditor;
 using System.IO;
@@ -69,10 +69,10 @@ namespace Oddworm.EditorFramework
                 for (var n=0; n< value.Length; ++n)
                 {
                     if (value[n] == null)
-                        throw new System.NotSupportedException(string.Format("The texture at array index '{0}' must not be 'null'.", n));
+                        throw new System.NotSupportedException($"The texture at array index '{n}' must not be 'null'.");
 
                     if (string.IsNullOrEmpty(AssetDatabase.GetAssetPath(value[n])))
-                        throw new System.NotSupportedException(string.Format("The texture '{1}' at array index '{0}' does not exist on disk. Only texture assets can be added.", n, value[n].name));
+                        throw new System.NotSupportedException($"The texture '{value[n].name}' at array index '{n}' does not exist on disk. Only texture assets can be added.");
                 }
 
                 m_Textures = new List<Texture2D>(value);
@@ -239,7 +239,7 @@ namespace Oddworm.EditorFramework
             if (!SystemInfo.supports2DArrayTextures)
             {
                 if (logToConsole)
-                    ctx.LogImportError(string.Format("Import failed '{0}'. Your system does not support texture arrays.", ctx.assetPath), ctx.mainObject);
+                    ctx.LogImportError($"Import failed '{ctx.assetPath}'. Your system does not support texture arrays.", ctx.mainObject);
 
                 return false;
             }
@@ -249,7 +249,7 @@ namespace Oddworm.EditorFramework
                 if (m_Textures[0] == null)
                 {
                     if (logToConsole)
-                        ctx.LogImportError(string.Format("Import failed '{0}'. The first element in the 'Textures' list must not be 'None'.", ctx.assetPath), ctx.mainObject);
+                        ctx.LogImportError($"Import failed '{ctx.assetPath}'. The first element in the 'Textures' list must not be 'None'.", ctx.mainObject);
 
                     return false;
                 }
@@ -267,7 +267,7 @@ namespace Oddworm.EditorFramework
                         var error = GetVerifyString(n);
                         if (!string.IsNullOrEmpty(error))
                         {
-                            var msg = string.Format("Import failed '{0}'. {1}", ctx.assetPath, error);
+                            var msg = $"Import failed '{ctx.assetPath}'. {error}";
                             ctx.LogImportError(msg, ctx.mainObject);
                         }
                     }
@@ -341,7 +341,7 @@ namespace Oddworm.EditorFramework
 
                 case VerifyResult.Null:
                     {
-                        return string.Format("The texture for slice {0} must not be 'None'.", slice);
+                        return $"The texture for slice {slice} must not be 'None'.";
                     }
 
                 case VerifyResult.FormatMismatch:
@@ -349,8 +349,7 @@ namespace Oddworm.EditorFramework
                         var master = m_Textures[0];
                         var texture = m_Textures[slice];
 
-                        return string.Format("Texture '{0}' uses '{1}' as format, but must be using '{2}' instead, because the texture for slice 0 '{3}' is using '{2}' too.",
-                            texture.name, texture.format, master.format, master.name);
+                        return $"Texture '{texture.name}' uses '{texture.format}' as format, but must be using '{master.format}' instead, because the texture for slice 0 '{master.name}' is using '{master.format}' too.";
                     }
 
                 case VerifyResult.MipmapMismatch:
@@ -358,8 +357,7 @@ namespace Oddworm.EditorFramework
                         var master = m_Textures[0];
                         var texture = m_Textures[slice];
 
-                        return string.Format("Texture '{0}' has '{1}' mipmap(s), but must have '{2}' instead, because the texture for slice 0 '{3}' is having '{2}' mipmap(s). Please check if the 'Generate Mip Maps' setting for both textures is the same.",
-                            texture.name, texture.mipmapCount, master.mipmapCount, master.name);
+                        return $"Texture '{texture.name}' has '{texture.mipmapCount}' mipmap(s), but must have '{master.mipmapCount}' instead, because the texture for slice 0 '{master.name}' is having '{master.mipmapCount}' mipmap(s). Please check if the 'Generate Mip Maps' setting for both textures is the same.";
                     }
 
                 case VerifyResult.SRGBTextureMismatch:
@@ -367,8 +365,7 @@ namespace Oddworm.EditorFramework
                         var master = m_Textures[0];
                         var texture = m_Textures[slice];
 
-                        return string.Format("Texture '{0}' uses different 'sRGB' setting than slice 0 texture '{1}'.",
-                            texture.name, master.name);
+                        return $"Texture '{texture.name}' uses different 'sRGB' setting than slice 0 texture '{master.name}'.";
                     }
 
                 case VerifyResult.WidthMismatch:
@@ -377,8 +374,7 @@ namespace Oddworm.EditorFramework
                         var master = m_Textures[0];
                         var texture = m_Textures[slice];
 
-                        return string.Format("Texture '{0}' is {1}x{2} in size, but must be using the same size as the texture for slice 0 '{3}', which is {4}x{5}.",
-                            texture.name, texture.width, texture.height, master.name, master.width, master.height);
+                        return $"Texture '{texture.name}' is {texture.width}x{texture.height} in size, but must be using the same size as the texture for slice 0 '{master.name}', which is {master.width}x{master.height}.";
                     }
 
                 case VerifyResult.MasterNotAnAsset:
@@ -386,8 +382,7 @@ namespace Oddworm.EditorFramework
                     {
                         var texture = m_Textures[slice];
 
-                        return string.Format("Texture '{0}' is not saved to disk. Only texture assets that exist on disk can be added to a Texture2DArray asset.",
-                            texture.name);
+                        return $"Texture '{texture.name}' is not saved to disk. Only texture assets that exist on disk can be added to a Texture2DArray asset.";
                     }
             }
 
@@ -414,7 +409,7 @@ namespace Oddworm.EditorFramework
             if (string.IsNullOrEmpty(directoryPath))
                 directoryPath = "Assets/";
 
-            var fileName = string.Format("New Texture2DArray.{0}", kFileExtension);
+            var fileName = $"New Texture2DArray.{kFileExtension}";
             directoryPath = AssetDatabase.GenerateUniqueAssetPath(directoryPath + fileName);
             ProjectWindowUtil.CreateAssetWithContent(directoryPath, "This file represents a Texture2DArray asset for Unity.\nYou need the 'Texture2DArray Import Pipeline' package available at https://github.com/pschraut/UnityTexture2DArrayImportPipeline to properly import this file in Unity.");
         }
