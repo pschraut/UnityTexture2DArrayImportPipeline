@@ -152,10 +152,24 @@ namespace Oddworm.EditorFramework
                 srgbTexture = textureImporter.sRGBTexture;
             }
 
-            // Create the texture array.
-            // When the texture array asset is being created, there are no input textures added yet,
-            // thus we do Max(1, Count) to make sure to add at least 1 slice.
-            var texture2DArray = new Texture2DArray(width, height, Mathf.Max(1, m_Textures.Count), textureFormat, mipmapEnabled, !srgbTexture);
+            Texture2DArray texture2DArray = null;
+            try
+            {
+                // Create the texture array.
+                // When the texture array asset is being created, there are no input textures added yet,
+                // thus we do Max(1, Count) to make sure to add at least 1 slice.
+                texture2DArray = new Texture2DArray(width, height, Mathf.Max(1, m_Textures.Count), textureFormat, mipmapEnabled, !srgbTexture);
+            }
+            catch (System.Exception e)
+            {
+                Debug.LogException(e);
+                ctx.LogImportError($"Import failed '{ctx.assetPath}'.", ctx.mainObject);
+
+                isValid = false;
+                textureFormat = TextureFormat.RGBA32;
+                texture2DArray = new Texture2DArray(width, height, Mathf.Max(1, m_Textures.Count), textureFormat, mipmapEnabled, !srgbTexture);
+            }
+
             texture2DArray.wrapMode = m_WrapMode;
             texture2DArray.filterMode = m_FilterMode;
             texture2DArray.anisoLevel = m_AnisoLevel;

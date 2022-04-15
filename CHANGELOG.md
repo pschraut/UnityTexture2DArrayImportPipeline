@@ -4,6 +4,10 @@ All notable changes to this package are documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.5.0] - 2022-??-?? (not released yet)
+### Fixed
+ - Fixed that when ```new Texture2DArray``` causes an exception in the importer, that the Texture2DArray asset is left in a broken state. Now it will create a magenta Texture2DArray instead and log an error to the console.
+
 ## [1.4.0] - 2022-03-11
 After installing this update, it will trigger a reimport of all Texture2DArray assets in the project and Texture2DArray's will no longer be readable via scripts by default.
 ### Added
