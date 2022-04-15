@@ -4,7 +4,7 @@ All notable changes to this package are documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
-## [1.5.0] - 2022-??-?? (not released yet)
+## [1.5.0] - 2022-04-15
 ### Fixed
  - Fixed that when ```new Texture2DArray``` causes an exception in the importer, that the Texture2DArray asset is left in a broken state. Now it will create a magenta Texture2DArray instead and log an error to the console.
  - Perform source texture dependency registration as very first step during the import, to fix that Unity triggers a reimport of the Texture2DArray asset when changing a dependency, on an earlier failed Texture2DArray import.

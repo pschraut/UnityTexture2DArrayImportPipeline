@@ -1,6 +1,6 @@
 {
   "name": "com.oddworm.texture2darrayimportpipeline",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "displayName": "Texture2DArray Import Pipeline",
   "description": "A texture array is a collection of same size/format/flags 2D textures that look like a single object to the GPU.\n\nUnity has no built-in import pipeline for texture arrays in Unity 2020.1 and earlier versions.\n\nThe Texture2DArray Import Pipeline package you're currently looking at tries to fill the gap of that missing import pipeline in Unity and provides an implementation that makes it easy create and modify texture arrays. Hopefully just as good as you would expect from Unity in the first place. :)",
   "documentationUrl": "https://github.com/pschraut/UnityTexture2DArrayImportPipeline",
