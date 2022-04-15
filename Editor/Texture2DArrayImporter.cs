@@ -135,6 +135,30 @@ namespace Oddworm.EditorFramework
             var textureFormat = TextureFormat.ARGB32;
             var srgbTexture = true;
 
+            // Mark all input textures as dependency to the texture array.
+            // This causes the texture array to get re-generated when any input texture changes or when the build target changed.
+            for (var n = 0; n < m_Textures.Count; ++n)
+            {
+                var source = m_Textures[n];
+                if (source != null)
+                {
+                    var path = AssetDatabase.GetAssetPath(source);
+#if UNITY_2020_1_OR_NEWER
+                    ctx.DependsOnArtifact(path);
+#else
+                    ctx.DependsOnSourceAsset(path);
+#endif
+                }
+            }
+
+#if !UNITY_2020_1_OR_NEWER
+            // This value is not really used in this importer,
+            // but getting the build target here will add a dependency to the current active buildtarget.
+            // Because DependsOnArtifact does not exist in 2019.4, adding this dependency on top of the DependsOnSourceAsset
+            // will force a re-import when the target platform changes in case it would have impacted any texture this importer depends on.
+            var buildTarget = ctx.selectedBuildTarget;
+#endif
+
             // Check if the input textures are valid to be used to build the texture array.
             var isValid = Verify(ctx, false);
             if (isValid)
@@ -205,30 +229,6 @@ namespace Oddworm.EditorFramework
                     DestroyImmediate(errorTexture);
                 }
             }
-
-            // Mark all input textures as dependency to the texture array.
-            // This causes the texture array to get re-generated when any input texture changes or when the build target changed.
-            for (var n = 0; n < m_Textures.Count; ++n)
-            {
-                var source = m_Textures[n];
-                if (source != null)
-                {
-                    var path = AssetDatabase.GetAssetPath(source);
-#if UNITY_2020_1_OR_NEWER
-                    ctx.DependsOnArtifact(path);
-#else
-                    ctx.DependsOnSourceAsset(path);
-#endif
-                }
-            }
-
-#if !UNITY_2020_1_OR_NEWER
-            // This value is not really used in this importer,
-            // but getting the build target here will add a dependency to the current active buildtarget.
-            // Because DependsOnArtifact does not exist in 2019.4, adding this dependency on top of the DependsOnSourceAsset
-            // will force a re-import when the target platform changes in case it would have impacted any texture this importer depends on.
-            var buildTarget = ctx.selectedBuildTarget;
-#endif
 
             texture2DArray.Apply(false, !m_IsReadable);
             ctx.AddObjectToAsset("Texture2DArray", texture2DArray);
