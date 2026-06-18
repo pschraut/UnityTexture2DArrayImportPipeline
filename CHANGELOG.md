@@ -4,6 +4,12 @@ All notable changes to this package are documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [1.6.0] - 2026-06-18
+### Fixed
+ - Fixed Unity 6.5 compile error ```'ProjectWindowUtil.CreateAssetWithContent' is obsolete```
+ - Fixed Unity 6.4 compile warning ```'ProjectWindowUtil.CreateAssetWithContent' is obsolete```
+
+
 ## [1.5.0] - 2022-04-15
 ### Fixed
  - Fixed that when ```new Texture2DArray``` causes an exception in the importer, that the Texture2DArray asset is left in a broken state. Now it will create a magenta Texture2DArray instead and log an error to the console.

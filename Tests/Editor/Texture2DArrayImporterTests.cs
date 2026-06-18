@@ -1,5 +1,5 @@
 ﻿//
-// Texture2D Array Importer for Unity. Copyright (c) 2019 Peter Schraut (www.console-dev.de). See LICENSE.md
+// Texture2D Array Importer for Unity. Copyright (c) 2026 Peter Schraut (www.console-dev.de). See LICENSE.md
 // https://github.com/pschraut/UnityTexture2DArrayImportPipeline
 //
 using NUnit.Framework;

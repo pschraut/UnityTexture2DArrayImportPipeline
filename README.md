@@ -23,6 +23,7 @@ Please see the ```CHANGELOG.md``` file to see what's changed in each version.
 
 | Version  |     Link      |
 |----------|---------------|
+| 1.6.0 | https://github.com/pschraut/UnityTexture2DArrayImportPipeline.git#1.6.0 |
 | 1.5.0 | https://github.com/pschraut/UnityTexture2DArrayImportPipeline.git#1.5.0 |
 | 1.4.0 | https://github.com/pschraut/UnityTexture2DArrayImportPipeline.git#1.4.0 |
 | 1.3.0 | https://github.com/pschraut/UnityTexture2DArrayImportPipeline.git#1.3.0 |
